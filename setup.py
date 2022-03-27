@@ -8,11 +8,10 @@ with open('sendgrid/version.py') as f:
     exec(f.read())
 
 def getRequires():
-    deps = [
+    return [
         'python_http_client>=3.2.1',
         'starkbank-ecdsa>=2.0.1'
     ]
-    return deps
 
 
 dir_path = os.path.abspath(os.path.dirname(__file__))

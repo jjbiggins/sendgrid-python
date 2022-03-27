@@ -35,7 +35,7 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(sg_impersonate.impersonate_subuser, temp_subuser)
 
     def test_useragent(self):
-        useragent = '{}{}{}'.format('sendgrid/', sendgrid.__version__, ';python')
+        useragent = f'sendgrid/{sendgrid.__version__};python'
         self.assertEqual(self.sg.useragent, useragent)
 
     def test_host(self):
@@ -2305,5 +2305,6 @@ class UnitTests(unittest.TestCase):
                     copyright_line = line.strip()
                     break
         self.assertEqual(
-            'Copyright (C) %s, Twilio SendGrid, Inc. <help@twilio.com>' % datetime.datetime.now().year,
-            copyright_line)
+            f'Copyright (C) {datetime.datetime.now().year}, Twilio SendGrid, Inc. <help@twilio.com>',
+            copyright_line,
+        )
