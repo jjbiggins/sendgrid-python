@@ -247,22 +247,18 @@ class Personalization(object):
         personalization = {}
 
         for key in ['tos', 'ccs', 'bccs']:
-            value = getattr(self, key)
-            if value:
+            if value := getattr(self, key):
                 personalization[key[:-1]] = value
 
-        from_value = getattr(self, 'from_email')
-        if from_value:
+        if from_value := getattr(self, 'from_email'):
             personalization['from'] = from_value
 
         for key in ['subject', 'send_at', 'dynamic_template_data']:
-            value = getattr(self, key)
-            if value:
+            if value := getattr(self, key):
                 personalization[key] = value
 
         for prop_name in ['headers', 'substitutions', 'custom_args']:
-            prop = getattr(self, prop_name)
-            if prop:
+            if prop := getattr(self, prop_name):
                 obj = {}
                 for key in prop:
                     obj.update(key)
